@@ -30,7 +30,7 @@ def musica(request):
 def gaming(request):
 	template='video/Gaming.html'
 	data=dict()
-	data['gaming']=Video.objects.filter(categoria__nombre='gaming')
+	data['gaming']=Video.objects.filter(categoria__nombre='Gaming')
 	return render(request,template,data)
 def conspiraciones(request):
 	template='video/Conspiraciones.html'
