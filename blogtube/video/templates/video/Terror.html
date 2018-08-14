@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>{{ titulo }}</title>
+  <!-- Hojas de Estilo -->
+  <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}" />
+  <link rel="stylesheet" type="text/css" href="{% static "font-awesome/css/font-awesome.min.css" %}" />
+  <!-- Scripts -->
+  <script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"> </script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+  </head>
+  <body>
+    <header>
+
+    </header>
+    <section id="page">
+      <div class="container-fluid">
+       
+        {% block contenido %}
+
+
+<div class="sticky-top">
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3"><p style="color:red;"> <i class="fa fa-youtube-play fa-2x" aria-hidden="true" >BlogTube</p></i></h1>
+
+<ul class="nav nav-tabs ">
+  <li class="nav-item">
+    <a class="nav-link "  style="color:red;" href="{% url 'vista_video' %}">Home</a>
+  </li>
+{%for field in categs%}  
+  <li class="nav-item">
+      <a class="nav-link "  style="color:red;" href="{field.nombre}">{{field.nombre}}</a>
+  </li>
+ {%endfor%}
+
+
+
+  <!--brackets  -->
+</ul>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>TERROR </h1>
+    <div class="container-fluid">
+  <div class="row justify-content-md-center">
+
+        <div class="col-6 ">
+        <br>
+        {%for video in terror%}        
+        <h1 style="color:red;" >  {{video.nombre}} </h1>
+
+        <i style="color:red;" >  Publicado: {{video.fecha}} </i>
+        </br> 
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video.contenido}}" allowfullscreen></iframe>
+</div
+            <p>{{video.descripcion}}</p>
+
+        {%endfor%}
+    </div>
+        
+        {% endblock %} 
+      </div>
+    </section> 
+  </body>  
+</html>
